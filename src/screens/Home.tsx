@@ -7,6 +7,7 @@ import {
   RectButton,
   TextInput,
 } from 'react-native-gesture-handler';
+import {AuthContext, useAuth} from '../hooks/auth';
 
 const styles = StyleSheet.create({
   buton: {
@@ -21,33 +22,29 @@ const styles = StyleSheet.create({
     width: '90%',
     borderWidth: 1,
     color: 'black',
+    marginVertical: 20,
   },
   espaco: {
     backgroundColor: 'red',
     height: 100,
     width: '100%',
-    marginVertical: 100,
+    marginVertical: 50,
   },
 });
 
 export function Home({navigation}: ScreenProps) {
+  const {user} = useAuth();
+  console.log(user);
+
   return (
     <Container>
-      <RectButton
-        style={styles.buton}
-        onPress={() => navigation.navigate('Menu')}>
-        <Text>Ir para Menu</Text>
-      </RectButton>
-
+      <TextInput style={styles.input} />
+      <TextInput style={styles.input} />
       <BorderlessButton
         style={styles.buton}
         onPress={() => navigation.navigate('Menu')}>
-        <Text>Ir para Menu</Text>
+        <Text>Entrar</Text>
       </BorderlessButton>
-
-      <Text style={styles.espaco}>?</Text>
-      <TextInput style={styles.input} />
-      <Text style={styles.espaco}>?</Text>
     </Container>
   );
 }

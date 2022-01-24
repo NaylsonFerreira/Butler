@@ -2,6 +2,7 @@ import React from 'react';
 import {LogBox} from 'react-native';
 import {Routes} from './src/routes';
 import {StatusBar} from 'react-native';
+import {AuthProvider} from './src/hooks/auth';
 
 export default function App() {
   return (
@@ -11,7 +12,9 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      <Routes />
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
     </>
   );
 }
